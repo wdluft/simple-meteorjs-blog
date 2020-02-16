@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Posts } from '../api/posts';
 
 const NewPostForm = () => {
-  const [title, setTitle] = useState('Post Title');
-  const [body, setBody] = useState('Post Body');
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -16,7 +16,7 @@ const NewPostForm = () => {
       createdAt: new Date(), //current time
     });
 
-    setTitle('Title');
+    setTitle('');
     setBody('');
   };
 
@@ -25,6 +25,7 @@ const NewPostForm = () => {
       <input
         type='text'
         name='title'
+        placeholder='Post Title'
         value={title}
         onChange={e => setTitle(e.target.value)}
       />

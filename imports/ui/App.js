@@ -6,11 +6,13 @@ import { Posts } from '../api/posts';
 // Components
 import Post from './Post';
 import NewPostForm from './NewPostForm';
+import AccountsUIWrapper from './AccountsUIWrapper';
 
 const App = ({ posts }) => {
   return (
     <div>
       <h1>Simple Blog</h1>
+      <AccountsUIWrapper />
       <NewPostForm />
 
       {posts.map(post => (
