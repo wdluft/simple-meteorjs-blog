@@ -8,12 +8,13 @@ import Post from './Post';
 import NewPostForm from './NewPostForm';
 import AccountsUIWrapper from './AccountsUIWrapper';
 
-const App = ({ posts }) => {
+const App = ({ posts, currentUser }) => {
   return (
     <div>
       <h1>Simple Blog</h1>
       <AccountsUIWrapper />
-      <NewPostForm />
+
+      {currentUser ? <NewPostForm /> : ''}
 
       {posts.map(post => (
         <Post key={post._id} post={post} />
@@ -25,5 +26,6 @@ const App = ({ posts }) => {
 export default withTracker(() => {
   return {
     posts: Posts.find({}, { sort: { createdAt: -1 } }).fetch(),
+    currentUser: Meteor.user(),
   };
 })(App);
