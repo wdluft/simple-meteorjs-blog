@@ -17,7 +17,7 @@ const App = ({ posts, currentUser }) => {
       {currentUser ? <NewPostForm /> : ''}
 
       {posts.map(post => (
-        <Post key={post._id} post={post} />
+        <Post key={post._id} post={post} currentUser={currentUser} />
       ))}
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Posts } from '../api/posts';
 
 const NewPostForm = () => {
@@ -7,14 +8,8 @@ const NewPostForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(`Title: ${title}`);
-    console.log(`Body: ${body}`);
 
-    Posts.insert({
-      title,
-      body,
-      createdAt: new Date(), //current time
-    });
+    Meteor.call('posts.insert', title, body);
 
     setTitle('');
     setBody('');

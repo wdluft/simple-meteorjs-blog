@@ -1,22 +1,28 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Posts } from '../api/posts';
 
-const Post = ({ post }) => {
+const Post = ({ post, currentUser }) => {
   const { title, body, _id, createdAt } = post;
 
   const dateAsString = createdAt.toString();
 
   const deletePost = () => {
-    Posts.remove(_id);
+    Meteor.call('posts.remove', _id);
   };
   return (
     <div>
       <h1>{title}</h1>
       <p>{dateAsString}</p>
       <p>{body}</p>
-      <button type='button' onClick={deletePost}>
-        Remove Post
-      </button>
+
+      {currentUser ? (
+        <button type='button' onClick={deletePost}>
+          Remove Post
+        </button>
+      ) : (
+        ''
+      )}
     </div>
   );
 };
