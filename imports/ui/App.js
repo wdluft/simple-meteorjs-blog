@@ -8,18 +8,14 @@ import Post from './Post';
 import NewPostForm from './NewPostForm';
 
 const App = ({ posts }) => {
-  console.log(posts);
-
-  const renderPosts = () => {
-    return posts.map(post => <Post key={post._id} post={post} />);
-  };
-
   return (
     <div>
       <h1>Simple Blog</h1>
       <NewPostForm />
 
-      {renderPosts()}
+      {posts.map(post => (
+        <Post key={post._id} post={post} />
+      ))}
     </div>
   );
 };
