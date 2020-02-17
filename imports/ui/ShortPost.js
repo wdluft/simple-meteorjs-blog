@@ -8,15 +8,22 @@ const PostList = ({ post, currentUser }) => {
 
   const dateAsString = createdAt.toString();
 
+  const bodyPreview = () => {
+    let shortBody = body.split('');
+    return shortBody.splice(0, 50).join('');
+  };
+
   const deletePost = () => {
     Meteor.call('posts.remove', _id);
   };
   return (
     <div>
       <h1>{title}</h1>
-      <Link to={`/posts/${_id}`}>Read Post</Link>
       <p>{dateAsString}</p>
-      <p>{body}</p>
+      <p>
+        {bodyPreview()}...
+        <Link to={`/posts/${_id}`}>Read Post</Link>
+      </p>
 
       {currentUser ? (
         <button type='button' onClick={deletePost}>

@@ -6,6 +6,7 @@ import { Posts } from '../api/posts';
 
 // Components
 import Post from './Post';
+import PostListContainer from './PostListContainer';
 import NewPostForm from './NewPostForm';
 import AccountsUIWrapper from './AccountsUIWrapper';
 
@@ -15,16 +16,17 @@ const App = ({ posts, currentUser }) => {
       <div>
         <h1>Simple Blog</h1>
         <Link to='/'>Home</Link>
-        <AccountsUIWrapper />
+        <Link to='/login'>Login</Link>
 
         <Switch>
+          <Route path='/login'>
+            <AccountsUIWrapper />
+          </Route>
           <Route path='/addpost'>
             <NewPostForm />
           </Route>
           <Route path='/'>
-            {posts.map(post => (
-              <Post key={post._id} post={post} currentUser={currentUser} />
-            ))}
+            <PostListContainer />
           </Route>
         </Switch>
       </div>
