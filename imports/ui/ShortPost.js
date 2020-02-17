@@ -1,10 +1,13 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Posts } from '../api/posts';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch, Switch, Route } from 'react-router-dom';
+import Post from './Post';
 
 const PostList = ({ post, currentUser }) => {
   const { title, body, _id, createdAt } = post;
+
+  let match = useRouteMatch();
 
   const dateAsString = createdAt.toString();
 
