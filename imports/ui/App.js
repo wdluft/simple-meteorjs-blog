@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 
 import { Posts } from '../api/posts';
@@ -10,16 +11,24 @@ import AccountsUIWrapper from './AccountsUIWrapper';
 
 const App = ({ posts, currentUser }) => {
   return (
-    <div>
-      <h1>Simple Blog</h1>
-      <AccountsUIWrapper />
+    <Router>
+      <div>
+        <h1>Simple Blog</h1>
+        <Link to='/'>Home</Link>
+        <AccountsUIWrapper />
 
-      {currentUser ? <NewPostForm /> : ''}
-
-      {posts.map(post => (
-        <Post key={post._id} post={post} currentUser={currentUser} />
-      ))}
-    </div>
+        <Switch>
+          <Route path='/addpost'>
+            <NewPostForm />
+          </Route>
+          <Route path='/'>
+            {posts.map(post => (
+              <Post key={post._id} post={post} currentUser={currentUser} />
+            ))}
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 };
 
