@@ -1,44 +1,53 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Posts } from '../api/posts';
+import { withTracker } from 'meteor/react-meteor-data';
 
-const Post = ({ post }) => {
+const withPost = withTracker(({ postId }) => {
+  const post = Posts.findOne({ _id: postId.postId });
+  return {
+    post,
+  };
+});
+
+const withUser = withTracker(props => {
+  const user = Meteor.user();
+  return {
+    user,
+  };
+});
+
+const Post = ({ post, user }) => {
+  if (post === undefined) {
+    return (
+      <div>
+        <h1>LOADING</h1>
+      </div>
+    );
+  }
+
   const { title, body, _id, createdAt } = post;
-  console.log('From post route:');
-  console.log(post);
-
+  const dateAsString = createdAt.toString();
+  const deletePost = () => {
+    Meteor.call('posts.remove', _id);
+  };
   return (
     <div>
-      <p>Single Post Route</p>
+      <h1>{title}</h1>
+      <p>{dateAsString}</p>
+      <p>{body}</p>
+
+      {user ? (
+        <button type='button' onClick={deletePost}>
+          Remove Post
+        </button>
+      ) : (
+        ''
+      )}
     </div>
   );
 };
 
-// const Post = ({ post}) => {
-//   const { title, body, _id, createdAt } = post;
+const Testing = withUser(withPost(Post));
 
-//   const { postId } = useParams();
-
-//   const dateAsString = createdAt.toString();
-
-//   const deletePost = () => {
-//     Meteor.call('posts.remove', _id);
-//   };
-//   return (
-//     <div>
-//       <h1>{title}</h1>
-//       <p>{dateAsString}</p>
-//       <p>{body}</p>
-
-//       {currentUser ? (
-//         <button type='button' onClick={deletePost}>
-//           Remove Post
-//         </button>
-//       ) : (
-//         ''
-//       )}
-//     </div>
-//   );
-// };
-
-export default Post;
+export default Testing;

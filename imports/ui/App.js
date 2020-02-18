@@ -7,7 +7,6 @@ import { Posts } from '../api/posts';
 // Components
 import Post from './Post';
 import SinglePost from './SinglePost';
-import PostContainer from './PostContainer';
 import PostListContainer from './PostListContainer';
 import NewPostForm from './NewPostForm';
 import AccountsUIWrapper from './AccountsUIWrapper';
@@ -19,6 +18,7 @@ const App = ({ posts, currentUser }) => {
         <h1>Simple Blog</h1>
         <Link to='/posts'>Home</Link>
         <Link to='/login'>Login</Link>
+        <Link to='/addpost'>Add Post</Link>
 
         <Switch>
           <Route path='/login'>
