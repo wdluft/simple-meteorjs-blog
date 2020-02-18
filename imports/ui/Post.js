@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Posts } from '../api/posts';
 import { withTracker } from 'meteor/react-meteor-data';
+import { useHistory } from 'react-router-dom';
 
 const withPost = withTracker(({ postId }) => {
   const post = Posts.findOne({ _id: postId.postId });
@@ -17,7 +18,10 @@ const withUser = withTracker(props => {
   };
 });
 
+// ACTUAL COMPONENT
 const Post = ({ post, user }) => {
+  let history = useHistory();
+
   if (post === undefined) {
     return (
       <div>
@@ -30,6 +34,7 @@ const Post = ({ post, user }) => {
   const dateAsString = createdAt.toString();
   const deletePost = () => {
     Meteor.call('posts.remove', _id);
+    history.push('/posts');
   };
   return (
     <div>

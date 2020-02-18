@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Posts } from '../api/posts';
+import { useHistory } from 'react-router-dom';
 
 const NewPostForm = () => {
+  let history = useHistory();
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
 
@@ -13,6 +15,7 @@ const NewPostForm = () => {
 
     setTitle('');
     setBody('');
+    history.push('/posts');
   };
 
   return (
