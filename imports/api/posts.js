@@ -1,5 +1,8 @@
+// eslint-disable-next-line import/no-unresolved
 import { Meteor } from 'meteor/meteor';
+// eslint-disable-next-line import/no-unresolved
 import { Mongo } from 'meteor/mongo';
+// eslint-disable-next-line import/no-unresolved
 import { check } from 'meteor/check';
 
 export const Posts = new Mongo.Collection('posts');
@@ -12,7 +15,7 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-  'posts.insert'(title, body) {
+  'posts.insert': function(title, body) {
     check(title, String);
     check(body, String);
 
@@ -27,7 +30,7 @@ Meteor.methods({
       createdAt: new Date(),
     });
   },
-  'posts.remove'(postId) {
+  'posts.remove': function(postId) {
     check(postId, String);
 
     if (!this.userId) {

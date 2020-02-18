@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+// eslint-disable-next-line import/no-unresolved
 import { Meteor } from 'meteor/meteor';
-import { Posts } from '../api/posts';
+// eslint-disable-next-line import/no-unresolved
 import { withTracker } from 'meteor/react-meteor-data';
 import { useHistory } from 'react-router-dom';
+import { Posts } from '../api/posts';
 
 const withPost = withTracker(({ postId }) => {
   const post = Posts.findOne({ _id: postId.postId });
@@ -11,7 +13,7 @@ const withPost = withTracker(({ postId }) => {
   };
 });
 
-const withUser = withTracker(props => {
+const withUser = withTracker(() => {
   const user = Meteor.user();
   return {
     user,
@@ -20,7 +22,7 @@ const withUser = withTracker(props => {
 
 // ACTUAL COMPONENT
 const Post = ({ post, user }) => {
-  let history = useHistory();
+  const history = useHistory();
 
   if (post === undefined) {
     return (
@@ -43,7 +45,7 @@ const Post = ({ post, user }) => {
       <p>{body}</p>
 
       {user ? (
-        <button type='button' onClick={deletePost}>
+        <button type="button" onClick={deletePost}>
           Remove Post
         </button>
       ) : (
