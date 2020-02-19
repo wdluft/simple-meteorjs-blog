@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ShortPost from './ShortPost';
 
 const PostList = ({ posts }) => (
@@ -8,5 +9,9 @@ const PostList = ({ posts }) => (
     ))}
   </div>
 );
+
+PostList.propTypes = {
+  posts: PropTypes.object.isRequired,
+};
 
 export default PostList;

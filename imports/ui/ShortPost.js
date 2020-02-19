@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const PostList = ({ post }) => {
   const { title, body, _id, createdAt } = post;
@@ -21,6 +22,10 @@ const PostList = ({ post }) => {
       </p>
     </div>
   );
+};
+
+PostList.propTypes = {
+  post: PropTypes.object.isRequired,
 };
 
 export default PostList;

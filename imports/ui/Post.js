@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 // eslint-disable-next-line import/no-unresolved
 import { withTracker } from 'meteor/react-meteor-data';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Posts } from '../api/posts';
 
 const withPost = withTracker(({ postId }) => {
@@ -53,6 +54,11 @@ const Post = ({ post, user }) => {
       )}
     </div>
   );
+};
+
+Post.propTypes = {
+  post: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 const Testing = withUser(withPost(Post));
