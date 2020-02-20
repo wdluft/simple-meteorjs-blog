@@ -34,7 +34,6 @@ const App = () => (
         </Route> */}
         <Route path="/">
           <div>
-            <h1>HOME</h1>
             <PostListContainer />
           </div>
         </Route>

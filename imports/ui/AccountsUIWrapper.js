@@ -11,12 +11,14 @@ export default class AccountsUIWrapper extends Component {
       ReactDOM.findDOMNode(this.refs.container)
     );
   }
+
   componentWillUnmount() {
     // Clean up Blaze view
     Blaze.remove(this.view);
   }
+
   render() {
     // Just render a placeholder container that will be filled in
-    return <span ref='container' />;
+    return <span ref="container" />;
   }
 }

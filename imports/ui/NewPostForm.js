@@ -6,11 +6,12 @@ const NewPostForm = () => {
   const history = useHistory();
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
+  const [description, setDescription] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    Meteor.call('posts.insert', title, body);
+    Meteor.call('posts.insert', title, body, description);
 
     setTitle('');
     setBody('');
@@ -27,11 +28,18 @@ const NewPostForm = () => {
         onChange={e => setTitle(e.target.value)}
       />
       <textarea
-        name=""
+        name="body"
         id=""
         cols="30"
         rows="10"
         onChange={e => setBody(e.target.value)}
+      />
+      <textarea
+        name="description"
+        id=""
+        cols="30"
+        rows="10"
+        onChange={e => setDescription(e.target.value)}
       />
       <button type="submit">Submit</button>
     </form>

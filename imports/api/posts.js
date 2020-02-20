@@ -15,9 +15,10 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-  'posts.insert': function(title, body) {
+  'posts.insert': function(title, body, description) {
     check(title, String);
     check(body, String);
+    check(description, String);
 
     // Make sure the user is logged in before adding a post
     if (!this.userId) {
@@ -27,6 +28,7 @@ Meteor.methods({
     Posts.insert({
       title,
       body,
+      description,
       createdAt: new Date(),
     });
   },

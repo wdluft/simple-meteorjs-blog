@@ -22,15 +22,13 @@ const Header = () => (
 export default Header;
 
 const StyledHeader = styled.header`
-  text-align: center;
-
   p {
     font-size: 1.5rem;
   }
 
   h1 {
     font-size: 4rem;
-    font-weight: bold;
+    font-weight: 900;
     letter-spacing: 0.5rem;
   }
 `;
