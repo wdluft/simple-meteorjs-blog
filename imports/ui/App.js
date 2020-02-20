@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 // eslint-disable-next-line import/no-unresolved
 import { withTracker } from 'meteor/react-meteor-data';
+import styled from 'styled-components';
 
 import { Posts } from '../api/posts';
 
@@ -12,23 +13,12 @@ import SinglePost from './SinglePost';
 import PostListContainer from './PostListContainer';
 import NewPostForm from './NewPostForm';
 import AccountsUIWrapper from './AccountsUIWrapper';
+import Header from './header/Header';
 
 const App = () => (
   <Router>
-    <div>
-      <h1>Simple Blog</h1>
-      <ul>
-        <li>
-          <Link to="/posts">Home</Link>
-        </li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-        <li>
-          <Link to="/addpost">Add Post</Link>
-        </li>
-      </ul>
-
+    <StyledApp>
+      <Header />
       <Switch>
         <Route path="/login">
           <AccountsUIWrapper />
@@ -39,16 +29,17 @@ const App = () => (
         <Route path="/posts/:postId">
           <SinglePost />
         </Route>
-        <Route path="/posts">
+        {/* <Route path="/posts">
           <PostListContainer />
-        </Route>
+        </Route> */}
         <Route path="/">
           <div>
             <h1>HOME</h1>
+            <PostListContainer />
           </div>
         </Route>
       </Switch>
-    </div>
+    </StyledApp>
   </Router>
 );
 
@@ -60,3 +51,8 @@ export default withTracker(() => {
     currentUser: Meteor.user(),
   };
 })(App);
+
+const StyledApp = styled.div`
+  max-width: 705px;
+  margin: 50px auto;
+`;

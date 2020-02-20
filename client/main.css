@@ -1,9 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Crimson+Pro|Rubik&display=swap');
+
+:root {
+  --primary-color-1: #06d6d6;
+  --primary-color-2: #84e9e9;
+  --primary-color-3: #43dddd;
+  --primary-color-4: #009797;
+  --primary-color-5: #006868;
+  --secondary-color-1: #eb0788;
+  --secondary-color-2: #f48ac6;
+  --secondary-color-3: #ee48a6;
+  --secondary-color-4: #ca0072;
+  --secondary-color-5: #8b004f;
+  --gray-color-9: #222222;
+  --gray-color-8: #515151;
+  --gray-color-7: #626262;
+  --gray-color-6: #7e7e7e;
+  --gray-color-5: #9e9e9e;
+  --gray-color-4: #b1b1b1;
+  --gray-color-3: #cfcfcf;
+  --gray-color-2: #e1e1e1;
+  --gray-color-1: #f7f7f7;
+  --gray-color-0: #ffffff;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
+html {
+  font-size: 16px;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: 'Crimson Pro', serif;
+  background: var(--gray-color-0);
+  color: var(--gray-color-9);
+  line-height: 1.5;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color-5);
+}
+
+a:hover {
+  color: var(--primary-color-1);
 }
