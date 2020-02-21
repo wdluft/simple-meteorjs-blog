@@ -1,17 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ShortPost from './ShortPost';
+import { usePosts } from '../custom-hooks/customHooks';
 
-const PostList = ({ posts }) => (
-  <div>
-    {posts.map(post => (
-      <ShortPost key={post._id} post={post} />
-    ))}
-  </div>
-);
+const PostList = () => {
+  const { posts } = usePosts();
 
-PostList.propTypes = {
-  posts: PropTypes.array.isRequired,
+  return (
+    <div>
+      {posts.map(post => (
+        <ShortPost key={post._id} post={post} />
+      ))}
+    </div>
+  );
 };
 
 export default PostList;

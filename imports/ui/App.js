@@ -10,18 +10,18 @@ import { Posts } from '../api/posts';
 
 // Components
 import SinglePost from './single-post/SinglePost';
-import PostListContainer from './post-list/PostListContainer';
 import NewPostForm from './creating-post/NewPostForm';
-import AccountsUIWrapper from './AccountsUIWrapper';
 import Header from './header/Header';
+import AdminDashboard from './admin/AdminDashboard';
+import PostList from './post-list/PostList';
 
 const App = () => (
   <Router>
     <StyledApp>
       <Header />
       <Switch>
-        <Route path="/admin/login">
-          <AccountsUIWrapper />
+        <Route path="/admin">
+          <AdminDashboard />
         </Route>
         <Route path="/admin/addpost">
           <NewPostForm />
@@ -30,7 +30,7 @@ const App = () => (
           <SinglePost />
         </Route>
         <Route path="/">
-          <PostListContainer />
+          <PostList />
         </Route>
       </Switch>
     </StyledApp>

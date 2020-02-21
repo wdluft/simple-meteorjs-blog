@@ -43,7 +43,6 @@ const Post = ({ post, user }) => {
   }
 
   const { title, body, _id, createdAt } = post;
-  console.log(body);
   const deletePost = () => {
     Meteor.call('posts.remove', _id);
     history.push('/posts');

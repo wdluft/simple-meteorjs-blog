@@ -30,6 +30,8 @@ const NewPostForm = () => {
     return <Redirect to="/admin/login" />;
   }
 
+  console.log(user);
+
   return (
     <form>
       <p>Title:</p>
