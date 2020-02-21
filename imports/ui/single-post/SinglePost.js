@@ -6,7 +6,6 @@ import { useParams, useHistory } from 'react-router-dom';
 import moment from 'moment';
 import styled from 'styled-components';
 import { usePost, useAccount } from '../custom-hooks/customHooks';
-import { Posts } from '../../api/posts';
 import { StyledPost } from '../reusable-components/StyledPost';
 
 const renderer = new marked.Renderer();

@@ -13,7 +13,7 @@ import NewPostForm from './creating-post/NewPostForm';
 import Header from './header/Header';
 import AdminDashboard from './admin/AdminDashboard';
 import PostList from './post-list/PostList';
-import OnlyOne from './single-post/OnlyOne';
+import SinglePost from './single-post/SinglePost';
 
 const App = () => (
   <Router>
@@ -27,7 +27,7 @@ const App = () => (
           <AdminDashboard />
         </Route>
         <Route path="/posts/:postId">
-          <OnlyOne />
+          <SinglePost />
         </Route>
         <Route path="/">
           <PostList />
