@@ -38,10 +38,10 @@ const NewPostForm = () => {
       <p>Description: </p>
       <textarea
         name="description"
-        id=""
+        id="description"
         multiline="true"
-        cols="30"
-        rows="10"
+        cols="100"
+        rows="5"
         required="required"
         onChange={e => {
           setDescription(e.target.value);
@@ -50,10 +50,10 @@ const NewPostForm = () => {
       <p>Body:</p>
       <textarea
         name="body"
-        id=""
+        id="body"
         requred="required"
-        cols="30"
-        rows="10"
+        cols="100"
+        rows="20"
         value={body}
         onChange={e => {
           setBody(e.target.value);
