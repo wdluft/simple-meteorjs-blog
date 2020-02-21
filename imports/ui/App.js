@@ -9,25 +9,25 @@ import styled from 'styled-components';
 import { Posts } from '../api/posts';
 
 // Components
-import SinglePost from './single-post/SinglePost';
 import NewPostForm from './creating-post/NewPostForm';
 import Header from './header/Header';
 import AdminDashboard from './admin/AdminDashboard';
 import PostList from './post-list/PostList';
+import OnlyOne from './single-post/OnlyOne';
 
 const App = () => (
   <Router>
     <StyledApp>
       <Header />
       <Switch>
-        <Route path="/admin">
-          <AdminDashboard />
-        </Route>
         <Route path="/admin/addpost">
           <NewPostForm />
         </Route>
+        <Route path="/admin">
+          <AdminDashboard />
+        </Route>
         <Route path="/posts/:postId">
-          <SinglePost />
+          <OnlyOne />
         </Route>
         <Route path="/">
           <PostList />

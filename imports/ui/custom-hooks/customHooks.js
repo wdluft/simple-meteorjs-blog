@@ -14,12 +14,13 @@ export const useAccount = () =>
     };
   }, []);
 
-export const usePost = postId => {
-  const post = Posts.findOne({ _id: postId.postId });
-  return {
-    post,
-  };
-};
+export const usePost = postId =>
+  useTracker(() => {
+    const post = Posts.findOne({ _id: postId });
+    return {
+      post,
+    };
+  }, [postId]);
 
 export const usePosts = () => {
   const posts = Posts.find({}, { sort: { createdAt: -1 } }).fetch();

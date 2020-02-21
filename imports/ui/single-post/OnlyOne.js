@@ -1,38 +1,24 @@
 import React from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { Meteor } from 'meteor/meteor';
-// eslint-disable-next-line import/no-unresolved
-import { withTracker } from 'meteor/react-meteor-data';
-import { useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import marked from 'marked';
+import { useParams, useHistory } from 'react-router-dom';
 import moment from 'moment';
 import styled from 'styled-components';
-import marked from 'marked';
+import { usePost, useAccount } from '../custom-hooks/customHooks';
 import { Posts } from '../../api/posts';
 import { StyledPost } from '../reusable-components/StyledPost';
-
-const withPost = withTracker(({ postId }) => {
-  const post = Posts.findOne({ _id: postId.postId });
-  return {
-    post,
-  };
-});
-
-const withUser = withTracker(() => {
-  const user = Meteor.user();
-  return {
-    user,
-  };
-});
 
 const renderer = new marked.Renderer();
 marked.setOptions({
   breaks: true,
 });
 
-// ACTUAL COMPONENT
-const Post = ({ post, user }) => {
+const OnlyOne = () => {
   const history = useHistory();
+  const { postId } = useParams();
+  const { post } = usePost(postId);
+  const { isLoggedIn } = useAccount();
 
   if (post === undefined) {
     return (
@@ -43,9 +29,10 @@ const Post = ({ post, user }) => {
   }
 
   const { title, body, _id, createdAt } = post;
+
   const deletePost = () => {
     Meteor.call('posts.remove', _id);
-    history.push('/posts');
+    history.push('/');
   };
   return (
     <StyledSinglePost>
@@ -57,7 +44,7 @@ const Post = ({ post, user }) => {
         }}
       />
 
-      {user ? (
+      {isLoggedIn ? (
         <button type="button" onClick={deletePost}>
           Remove Post
         </button>
@@ -68,14 +55,7 @@ const Post = ({ post, user }) => {
   );
 };
 
-Post.propTypes = {
-  post: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired,
-};
-
-const Testing = withUser(withPost(Post));
-
-export default Testing;
+export default OnlyOne;
 
 const StyledSinglePost = styled(StyledPost)`
   .date {
