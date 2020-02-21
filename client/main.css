@@ -35,8 +35,8 @@ html {
 
 body {
   font-family: 'Crimson Pro', serif;
-  background: var(--gray-color-0);
-  color: var(--gray-color-9);
+  background: var(--gray-color-9);
+  color: var(--gray-color-1);
   line-height: 1.5;
 }
 
@@ -46,9 +46,9 @@ li {
 
 a {
   text-decoration: none;
-  color: var(--primary-color-5);
+  color: var(--primary-color-1);
 }
 
 a:hover {
-  color: var(--primary-color-1);
+  color: var(--primary-color-4);
 }

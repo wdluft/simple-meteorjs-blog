@@ -6,7 +6,7 @@ const Header = () => (
   <StyledHeader>
     <h1>Blog Title</h1>
     <p>
-      By{' '}
+      A collection of thoughts by{' '}
       <a
         href="https://twitter.com/iamwilldl"
         rel="noopener noreferrer"
@@ -22,6 +22,8 @@ const Header = () => (
 export default Header;
 
 const StyledHeader = styled.header`
+  margin-bottom: 2rem;
+
   p {
     font-size: 1.5rem;
   }

@@ -5,7 +5,11 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Posts } from '../api/posts';
+import moment from 'moment';
+import styled from 'styled-components';
+import marked from 'marked';
+import { Posts } from '../../api/posts';
+import { StyledPost } from '../reusable-components/StyledPost';
 
 const withPost = withTracker(({ postId }) => {
   const post = Posts.findOne({ _id: postId.postId });
@@ -21,6 +25,11 @@ const withUser = withTracker(() => {
   };
 });
 
+const renderer = new marked.Renderer();
+marked.setOptions({
+  breaks: true,
+});
+
 // ACTUAL COMPONENT
 const Post = ({ post, user }) => {
   const history = useHistory();
@@ -34,16 +43,20 @@ const Post = ({ post, user }) => {
   }
 
   const { title, body, _id, createdAt } = post;
-  const dateAsString = createdAt.toString();
+  console.log(body);
   const deletePost = () => {
     Meteor.call('posts.remove', _id);
     history.push('/posts');
   };
   return (
-    <div>
+    <StyledSinglePost>
       <h1>{title}</h1>
-      <p>{dateAsString}</p>
-      <p>{body}</p>
+      <p className="date">{moment(createdAt).format('dddd, MMMM D YYYY')}</p>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: marked(body, { renderer }),
+        }}
+      />
 
       {user ? (
         <button type="button" onClick={deletePost}>
@@ -52,7 +65,7 @@ const Post = ({ post, user }) => {
       ) : (
         ''
       )}
-    </div>
+    </StyledSinglePost>
   );
 };
 
@@ -64,3 +77,9 @@ Post.propTypes = {
 const Testing = withUser(withPost(Post));
 
 export default Testing;
+
+const StyledSinglePost = styled(StyledPost)`
+  .date {
+    margin-bottom: 1.5rem;
+  }
+`;

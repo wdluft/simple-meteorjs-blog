@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import { withTracker } from 'meteor/react-meteor-data';
-import { Posts } from '../api/posts';
+import { Posts } from '../../api/posts';
 import PostList from './PostList';
 
 const PostListContainer = withTracker(() => ({

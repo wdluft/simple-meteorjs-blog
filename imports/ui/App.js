@@ -9,9 +9,9 @@ import styled from 'styled-components';
 import { Posts } from '../api/posts';
 
 // Components
-import SinglePost from './SinglePost';
-import PostListContainer from './PostListContainer';
-import NewPostForm from './NewPostForm';
+import SinglePost from './single-post/SinglePost';
+import PostListContainer from './post-list/PostListContainer';
+import NewPostForm from './creating-post/NewPostForm';
 import AccountsUIWrapper from './AccountsUIWrapper';
 import Header from './header/Header';
 
@@ -29,9 +29,6 @@ const App = () => (
         <Route path="/posts/:postId">
           <SinglePost />
         </Route>
-        {/* <Route path="/posts">
-          <PostListContainer />
-        </Route> */}
         <Route path="/">
           <div>
             <PostListContainer />
