@@ -51,4 +51,5 @@ a {
 
 a:hover {
   color: var(--primary-color-4);
+  text-decoration: underline;
 }
