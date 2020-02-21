@@ -12,6 +12,11 @@ const NewPostForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
+    if (body === '' || title === '' || description === '') {
+      alert('All fields are required');
+      return;
+    }
+
     Meteor.call('posts.insert', title, body, description);
 
     setTitle('');
@@ -28,7 +33,7 @@ const NewPostForm = () => {
         placeholder="Post Title"
         value={title}
         onChange={e => setTitle(e.target.value)}
-        required
+        required="required"
       />
       <p>Description: </p>
       <textarea
@@ -37,7 +42,7 @@ const NewPostForm = () => {
         multiline="true"
         cols="30"
         rows="10"
-        required
+        required="required"
         onChange={e => {
           setDescription(e.target.value);
         }}
@@ -46,16 +51,14 @@ const NewPostForm = () => {
       <textarea
         name="body"
         id=""
-        requred
+        requred="required"
         cols="30"
         rows="10"
         value={body}
         onChange={e => {
-          console.log(e.target.value);
           setBody(e.target.value);
         }}
       />
-      <p>{body}</p>
       <button onClick={handleSubmit} type="submit">
         Submit
       </button>
