@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { Meteor } from 'meteor/meteor';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import { useAccount } from '../custom-hooks/customHooks';
 
 const NewPostForm = () => {
@@ -27,11 +27,7 @@ const NewPostForm = () => {
   };
 
   if (!isLoggedIn) {
-    return (
-      <div>
-        <h1>You are not logged in</h1>
-      </div>
-    );
+    return <Redirect to="/admin/login" />;
   }
 
   return (
