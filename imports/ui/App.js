@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // eslint-disable-next-line import/no-unresolved
 import { Meteor } from 'meteor/meteor';
 // eslint-disable-next-line import/no-unresolved
@@ -20,19 +20,17 @@ const App = () => (
     <StyledApp>
       <Header />
       <Switch>
-        <Route path="/login">
+        <Route path="/admin/login">
           <AccountsUIWrapper />
         </Route>
-        <Route path="/addpost">
+        <Route path="/admin/addpost">
           <NewPostForm />
         </Route>
         <Route path="/posts/:postId">
           <SinglePost />
         </Route>
         <Route path="/">
-          <div>
-            <PostListContainer />
-          </div>
+          <PostListContainer />
         </Route>
       </Switch>
     </StyledApp>

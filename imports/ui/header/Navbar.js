@@ -9,10 +9,10 @@ const Navbar = () => (
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/login">Login</Link>
+        <Link to="/admin/login">Login</Link>
       </li>
       <li>
-        <Link to="/addpost">Add Post</Link>
+        <Link to="/admin/addpost">Add Post</Link>
       </li>
     </ul>
   </StyledNav>
