@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import moment from 'moment';
+// eslint-disable-next-line import/no-unresolved
 import { Meteor } from 'meteor/meteor';
 import { StyledPost } from '../reusable-components/StyledPost';
 import { useAccount } from '../custom-hooks/customHooks';

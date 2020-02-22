@@ -1,11 +1,10 @@
 import React from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { Meteor } from 'meteor/meteor';
 import marked from 'marked';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import styled from 'styled-components';
-import { usePost, useAccount } from '../custom-hooks/customHooks';
+import { usePost } from '../custom-hooks/customHooks';
 import { StyledPost } from '../reusable-components/StyledPost';
 
 const renderer = new marked.Renderer();
@@ -14,10 +13,8 @@ marked.setOptions({
 });
 
 const OnlyOne = () => {
-  const history = useHistory();
   const { postId } = useParams();
   const { post } = usePost(postId);
-  const { isLoggedIn } = useAccount();
 
   if (post === undefined) {
     return (
@@ -27,7 +24,7 @@ const OnlyOne = () => {
     );
   }
 
-  const { title, body, _id, createdAt } = post;
+  const { title, body, createdAt } = post;
   return (
     <StyledSinglePost>
       <h1>{title}</h1>

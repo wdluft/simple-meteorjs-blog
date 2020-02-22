@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Accounts } from 'meteor/accounts-base';
+// eslint-disable-next-line import/no-unresolved
 import { Meteor } from 'meteor/meteor';
 
-import AccountsUIWrapper from './AccountsUIWrapper';
 import AdminPostList from './AdminPostList';
 import { useAccount } from '../custom-hooks/customHooks';
 import LoginForm from './LoginForm';

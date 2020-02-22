@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Accounts } from 'meteor/accounts-base';
+// eslint-disable-next-line import/no-unresolved
 import { Meteor } from 'meteor/meteor';
 
 const LoginForm = () => {
