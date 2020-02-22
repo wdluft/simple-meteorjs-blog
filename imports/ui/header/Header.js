@@ -2,22 +2,28 @@ import React from 'react';
 import styled from 'styled-components';
 import Navbar from './Navbar';
 
-const Header = () => (
-  <StyledHeader>
-    <h1>Blog Title</h1>
-    <p>
-      A collection of thoughts by{' '}
-      <a
-        href="https://twitter.com/iamwilldl"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        Will Luft
-      </a>
-    </p>
-    <Navbar />
-  </StyledHeader>
-);
+import { useAccount } from '../custom-hooks/customHooks';
+
+const Header = () => {
+  const { isLoggedIn } = useAccount();
+
+  return (
+    <StyledHeader>
+      <h1>Blog Title</h1>
+      <p>
+        A collection of thoughts by{' '}
+        <a
+          href="https://twitter.com/iamwilldl"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Will Luft
+        </a>
+      </p>
+      {isLoggedIn ? <Navbar /> : ''}
+    </StyledHeader>
+  );
+};
 
 export default Header;
 
