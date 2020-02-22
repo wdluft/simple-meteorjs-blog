@@ -14,12 +14,16 @@ import Header from './header/Header';
 import AdminDashboard from './admin/AdminDashboard';
 import PostList from './post-list/PostList';
 import SinglePost from './single-post/SinglePost';
+import LoginForm from './admin/LoginForm';
 
 const App = () => (
   <Router>
     <StyledApp>
       <Header />
       <Switch>
+        <Route path="/admin/login">
+          <LoginForm />
+        </Route>
         <Route path="/admin/addpost">
           <NewPostForm />
         </Route>
