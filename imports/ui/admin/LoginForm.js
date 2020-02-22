@@ -3,7 +3,6 @@ import { Accounts } from 'meteor/accounts-base';
 import { Meteor } from 'meteor/meteor';
 
 const LoginForm = () => {
-  console.log(Accounts);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 

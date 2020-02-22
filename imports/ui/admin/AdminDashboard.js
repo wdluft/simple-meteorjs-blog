@@ -1,26 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Accounts } from 'meteor/accounts-base';
+import { Meteor } from 'meteor/meteor';
 
 import AccountsUIWrapper from './AccountsUIWrapper';
 import AdminPostList from './AdminPostList';
 import { useAccount } from '../custom-hooks/customHooks';
+import LoginForm from './LoginForm';
 
 const AdminDashboard = () => {
   const { isLoggedIn } = useAccount();
 
+  const logoutFunction = () => {
+    Meteor.logout();
+  };
+
   if (!isLoggedIn) {
-    return (
-      <div>
-        <h1>Login:</h1>
-        <AccountsUIWrapper />
-      </div>
-    );
+    return <LoginForm />;
   }
 
   return (
     <div>
       <p>Logout</p>
-      <AccountsUIWrapper />
+      <button type="button" onClick={logoutFunction}>
+        Logout
+      </button>
       <p>
         <Link to="/admin/addpost">Add New Post</Link>
       </p>
