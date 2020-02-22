@@ -28,11 +28,6 @@ const OnlyOne = () => {
   }
 
   const { title, body, _id, createdAt } = post;
-
-  const deletePost = () => {
-    Meteor.call('posts.remove', _id);
-    history.push('/');
-  };
   return (
     <StyledSinglePost>
       <h1>{title}</h1>
@@ -42,14 +37,6 @@ const OnlyOne = () => {
           __html: marked(body, { renderer }),
         }}
       />
-
-      {isLoggedIn ? (
-        <button type="button" onClick={deletePost}>
-          Remove Post
-        </button>
-      ) : (
-        ''
-      )}
     </StyledSinglePost>
   );
 };
