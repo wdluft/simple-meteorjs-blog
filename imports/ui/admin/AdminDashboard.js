@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 // eslint-disable-next-line import/no-unresolved
 import { Meteor } from 'meteor/meteor';
 
@@ -12,6 +12,7 @@ const AdminDashboard = () => {
 
   const logoutFunction = () => {
     Meteor.logout();
+    return <Redirect to="/" />;
   };
 
   if (!isLoggedIn) {
@@ -24,9 +25,6 @@ const AdminDashboard = () => {
       <button type="button" onClick={logoutFunction}>
         Logout
       </button>
-      <p>
-        <Link to="/admin/addpost">Add New Post</Link>
-      </p>
       <p>Post List</p>
       <AdminPostList />
     </div>

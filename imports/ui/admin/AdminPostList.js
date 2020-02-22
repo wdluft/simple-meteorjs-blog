@@ -7,13 +7,13 @@ const AdminPostList = () => {
 
   return (
     <div>
-      {posts.map(post => (
-        <ul>
+      <ul>
+        {posts.map(post => (
           <li>
-            <AdminShortPost key={post._id} post={post} />
+            <AdminShortPost key={`admin-${post._id}`} post={post} />
           </li>
-        </ul>
-      ))}
+        ))}
+      </ul>
     </div>
   );
 };

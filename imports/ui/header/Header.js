@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Navbar from './Navbar';
 
@@ -9,7 +10,9 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <h1>Blog Title</h1>
+      <h1>
+        <Link to="/">Blog Title</Link>
+      </h1>
       <p>
         A collection of thoughts by{' '}
         <a
@@ -38,5 +41,9 @@ const StyledHeader = styled.header`
     font-size: 4rem;
     font-weight: 900;
     letter-spacing: 0.5rem;
+
+    background: -webkit-linear-gradient(90deg, #00ffff -0.05%, #ff0095 99.95%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 `;

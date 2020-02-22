@@ -10,6 +10,7 @@ import { StyledPost } from '../reusable-components/StyledPost';
 const renderer = new marked.Renderer();
 marked.setOptions({
   breaks: true,
+  gfm: true,
 });
 
 const OnlyOne = () => {
