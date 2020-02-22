@@ -14,6 +14,11 @@ const NewPostForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
+    if (!isLoggedIn) {
+      alert('Must be logged in to create a new post');
+      return;
+    }
+
     if (body === '' || title === '' || description === '') {
       alert('All fields are required');
       return;
