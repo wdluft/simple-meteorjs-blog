@@ -41,9 +41,13 @@ const StyledHeader = styled.header`
     font-size: 4rem;
     font-weight: 900;
     letter-spacing: 0.5rem;
+    color: var(--primary-color);
 
-    background: -webkit-linear-gradient(90deg, #00ffff -0.05%, #ff0095 99.95%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    a {
+      &:hover {
+        text-decoration: none;
+        color: var(--primary-color-1);
+      }
+    }
   }
 `;

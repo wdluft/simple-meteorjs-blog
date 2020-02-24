@@ -31,7 +31,7 @@ const App = () => (
         <Route path="/admin">
           <AdminDashboard />
         </Route>
-        <Route path="/posts/:postId">
+        <Route path="/:postId">
           <SinglePost />
         </Route>
         <Route path="/">

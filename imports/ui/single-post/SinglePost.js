@@ -43,6 +43,7 @@ export default OnlyOne;
 
 const StyledSinglePost = styled(StyledPost)`
   .date {
+    margin-top: 0.5rem;
     margin-bottom: 1.5rem;
   }
 `;

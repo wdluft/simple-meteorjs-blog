@@ -11,7 +11,7 @@ const PostList = ({ post }) => {
   return (
     <StyledPostList>
       <h1>
-        <Link to={`/posts/${_id}`}>{title}</Link>
+        <Link to={`/${_id}`}>{title}</Link>
       </h1>
       <p className="date">{moment(createdAt).format('dddd, MMMM D YYYY')}</p>
       <p>{description}</p>
@@ -27,4 +27,12 @@ export default PostList;
 
 const StyledPostList = styled(StyledPost)`
   margin-bottom: 2rem;
+
+  h1 {
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
 `;
