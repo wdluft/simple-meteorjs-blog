@@ -15,6 +15,7 @@ import AdminDashboard from './admin/AdminDashboard';
 import PostList from './post-list/PostList';
 import SinglePost from './single-post/SinglePost';
 import LoginForm from './admin/LoginForm';
+import Footer from './footer/Footer';
 
 const App = () => (
   <Router>
@@ -37,6 +38,7 @@ const App = () => (
           <PostList />
         </Route>
       </Switch>
+      <Footer />
     </StyledApp>
   </Router>
 );

@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <h1>
-        <Link to="/">Blog Title</Link>
+        <Link to="/">Become By Doing</Link>
       </h1>
       <p>
         A collection of thoughts by{' '}
